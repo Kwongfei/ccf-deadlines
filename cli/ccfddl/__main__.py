@@ -103,8 +103,10 @@ def main():
             skip = True
         if args.sub and alpha_id(x["sub"]) not in args.sub:
             skip = True
-        if args.rank and alpha_id(x["rank"]) not in args.rank:
-            skip = True
+        if args.rank:
+            ccf_rank = x["rank"].get("ccf", "")
+            if alpha_id(ccf_rank) not in args.rank:
+                skip = True
         if skip:
             continue
         table.append(
